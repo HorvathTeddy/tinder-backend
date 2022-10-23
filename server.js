@@ -42,6 +42,16 @@ app.get("/tinder/cards", (req, res) => {
     })
 })
 
+app.delete("/tinder/cards", (req, res) => {
+    Cards.deleteMany((err, data) => {
+        if (err) {
+            res.status(500).send(err)
+        } else {
+            res.status(201).send(data)
+        }
+    })
+})
+
 
 // Listener
 app.listen(port, () => console.log(`listening on localhost: ${port}`))
